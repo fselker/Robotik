@@ -5,7 +5,6 @@ import lejos.nxt.SensorPort;
 import lejos.nxt.SensorPortListener;
 import lejos.nxt.TouchSensor;
 import lejos.nxt.UltrasonicSensor;
-
 public class KroetenWanderung implements SensorPortListener {
 
 	public static void main(String args[]) {
@@ -15,13 +14,14 @@ public class KroetenWanderung implements SensorPortListener {
 
 	TouchSensor touchLinks;
 	TouchSensor touchRechts;
-	UltrasonicSensor us;
+	UltrasonicSensorExtended us;
 	Pilot p;
 
 	public KroetenWanderung() {
 		touchLinks = new TouchSensor(SensorPort.S1);
 		touchRechts = new TouchSensor(SensorPort.S4);
-		// us = new UltrasonicSensor(SensorPort.S2);
+		us = new UltrasonicSensorExtended(SensorPort.S2);
+		us.addSensorPortListener(new USListener());
 
 		p = new Pilot();
 		p.setTravelSpeed(80);
