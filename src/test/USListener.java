@@ -9,7 +9,7 @@ public class USListener implements SensorPortListener{
 	@Override
 	public void stateChanged(SensorPort aSource, int aOldValue, int aNewValue) {
 		// TODO Auto-generated method stub
-		if ( aNewValue>20&&aOldValue > aNewValue)
+		if ( aNewValue>20)
 			Sound.playTone (100,300,100);
 	}
 

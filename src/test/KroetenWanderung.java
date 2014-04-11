@@ -4,24 +4,27 @@ import lejos.nxt.Button;
 import lejos.nxt.SensorPort;
 import lejos.nxt.SensorPortListener;
 import lejos.nxt.TouchSensor;
-import lejos.nxt.UltrasonicSensor;
+
 public class KroetenWanderung implements SensorPortListener {
 
 	public static void main(String args[]) {
 		new KroetenWanderung();
-		while (!Button.ESCAPE.isDown());
+		while (!Button.ESCAPE.isDown())
+			;
 	}
 
 	TouchSensor touchLinks;
 	TouchSensor touchRechts;
 	UltrasonicSensorExtended us;
 	Pilot p;
+	boolean right = false, left = false;
 
 	public KroetenWanderung() {
 		touchLinks = new TouchSensor(SensorPort.S1);
 		touchRechts = new TouchSensor(SensorPort.S4);
-		us = new UltrasonicSensorExtended(SensorPort.S2);
-		us.addSensorPortListener(new USListener());
+		 us = new UltrasonicSensorExtended(SensorPort.S2);
+		 us.addSensorPortListener(new USListener());
+		 
 
 		p = new Pilot();
 		p.setTravelSpeed(80);
@@ -34,6 +37,8 @@ public class KroetenWanderung implements SensorPortListener {
 
 		}
 		p.stop();
+		left=false;
+		right=false;
 		p.forward();
 
 	}
@@ -44,16 +49,28 @@ public class KroetenWanderung implements SensorPortListener {
 			return;
 		boolean pressed = aOldValue > aNewValue;
 		boolean dir = !aSource.equals(SensorPort.S1);
-		if (pressed)
-			if (dir)
+		if (dir && !left)
+			right = true;
+		if (!dir && !right)
+			left = true;
+		if (pressed){
+			if((dir && left) || (!dir && right)){
+				p.travel(-100);
+				dir=!dir;
+			}
+			if (dir){
 				p.rotateLeft();
-			else
+			}
+			else{
 				p.rotateRight();
-		else if (dir)
+			}
+		}
+		else if (dir){
 			p.arcForward(-200);
-		else
+		}
+		else{
 			p.arcForward(200);
-
+		}
 	}
 
 	public static void Kroete(Pilot p, TouchSensor touchLinks,
