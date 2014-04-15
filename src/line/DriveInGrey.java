@@ -23,6 +23,7 @@ public class DriveInGrey extends MyBehavior{
 
 	@Override
 	public void suppress() {
+//		System.out.println("supress grey");
 		// TODO Auto-generated method stub
 		
 	}

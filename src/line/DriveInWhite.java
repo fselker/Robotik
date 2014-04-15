@@ -2,10 +2,9 @@ package line;
 
 
 public class DriveInWhite extends MyBehavior {
-	int dreh=10;
+	int dreh=2;
 	public DriveInWhite(Linienfolger lf) {
 		super(lf);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -17,14 +16,17 @@ public class DriveInWhite extends MyBehavior {
 	public void action() {
 		System.out.println("Weiss");
 		lf.p.rotate(dreh*lf.dir);
+
 		dreh*=2;
 		lf.dir*=-1;
 	}
 
 	@Override
 	public void suppress() {
-		dreh=10;
-
+		//lf.p.stop();
+		dreh=2;
+		lf.dir*=-1;
+//		System.out.println("supress white");
 	}
 
 }

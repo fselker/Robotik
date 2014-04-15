@@ -17,12 +17,13 @@ public class DriveInBlack extends MyBehavior {
 		lf.found=true;
 		lf.p.arcForward(lf.dir*lf.radius);
 		System.out.println("Schwarz");
-		//System.out.println("Ich fahre eine "+ ((dir>0)?"Links":"Rechts")+"kurve");
 	}
 
 	@Override
 	public void suppress() {
 		lf.dir*=-1;
+		lf.p.stop();
+//		System.out.println("supress black");
 		// TODO Auto-generated method stub
 
 	}
