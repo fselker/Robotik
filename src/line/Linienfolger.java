@@ -34,6 +34,12 @@ public class Linienfolger implements ButtonListener {
 	
 	public Linienfolger() {
 		p= new Pilot();
+		
+		ls = new LightSensor(SensorPort.S1);
+		ls.setFloodlight(true);
+		Button.LEFT.addButtonListener(this);
+		Button.RIGHT.addButtonListener(this);
+		Button.ESCAPE.addButtonListener(this);
 		FindLine fl = new FindLine(this);
 		DriveInBlack il = new DriveInBlack(this);
 		DriveInWhite rtl = new DriveInWhite(this);
@@ -42,11 +48,6 @@ public class Linienfolger implements ButtonListener {
 		Behavior [] bArray ={fl,il,rtl,baw};
 		arbitrator = new Arbitrator(bArray);
 		
-		ls = new LightSensor(SensorPort.S1);
-		ls.setFloodlight(true);
-		Button.LEFT.addButtonListener(this);
-		Button.RIGHT.addButtonListener(this);
-		Button.ESCAPE.addButtonListener(this);
 	}
 	
 	public void start(){
@@ -56,8 +57,8 @@ public class Linienfolger implements ButtonListener {
 	public static void main(String args[]) throws Exception{
 		
 		Linienfolger lf = new Linienfolger();
-		lf.p.setRotateSpeed(30);
-		lf.p.setTravelSpeed(30);
+		lf.p.setRotateSpeed(80);
+		lf.p.setTravelSpeed(80);
 		System.out.println("mit Enter starten");
 		while(!Button.ENTER.isDown())
 			Thread.sleep(100);

@@ -16,7 +16,7 @@ public class DriveInBlack extends MyBehavior {
 	public void action() {
 		lf.found=true;
 		lf.p.arcForward(lf.dir*lf.radius);
-		System.out.println("Schwarz");
+		System.out.println(lf.ls.getNormalizedLightValue());
 	}
 
 	@Override

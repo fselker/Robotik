@@ -14,7 +14,7 @@ public class DriveInWhite extends MyBehavior {
 
 	@Override
 	public void action() {
-		System.out.println("Weiss");
+		System.out.println(lf.ls.getNormalizedLightValue());
 		lf.p.rotate(dreh*lf.dir);
 
 		dreh*=2;

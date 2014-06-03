@@ -15,5 +15,9 @@ public class Pilot extends DifferentialPilot{
 	public void rotate(double angle){
 		super.rotate(angle*356/360);
 	}
+	public void setSpeed(double speed){
+		setTravelSpeed(speed);
+		setRotateSpeed(speed);
+	}
 
 }

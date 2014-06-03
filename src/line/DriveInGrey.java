@@ -17,7 +17,7 @@ public class DriveInGrey extends MyBehavior{
 	public void action() {
 		lf.found=true;
 		lf.p.arcForward(lf.radius*lf.dir/2);
-		System.out.println("Grau");
+		System.out.println(lf.ls.getNormalizedLightValue());
 		//System.out.println("Ich fahre eine starke "+ ((lf.dir>0)?"Links":"Rechts")+"kurve");
 	}
 
