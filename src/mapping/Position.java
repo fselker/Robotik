@@ -16,7 +16,7 @@ public class Position {
 		Param par=new Param();
 		par.x=this.x;
 		par.y=this.y;
-		if(this.x>p.x){
+		if(this.x>=p.x){
 			if(this.x==p.x){
 				if(this.y>p.y){
 					par.dy=-1;
