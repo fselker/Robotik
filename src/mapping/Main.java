@@ -36,7 +36,7 @@ public class Main implements Runnable{
 		t.start();
 		p.travel(1280);
 		m.run=false;
-		mapper.getReihe(64, m.values, new Position(32, 0 ), new Position(32,64));
+		mapper.getReihe(64, m.values, new Position(31, 0 ), new Position(31,63));
 		m.values.clear();
 		m.run = true;
 		

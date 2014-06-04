@@ -14,12 +14,12 @@ public class Mapper {
 	}
 
 	public void getReihe(int size, ArrayList<Double> list, Position start, Position end) {
-		double pro = list.size() / size;
+		double pro = 1.0*size/list.size() ;
 		int startx, starty, endx, endy;
 		Param p = start.View(end);
 		for (int i = 0; i < list.size(); i++) {
-			startx = (int) (p.x + p.dx * i * pro);
-			starty = (int) (p.y + p.dy * i * pro);
+			startx = (int) (p.x + p.dx * i * pro+ ((p.dx==-1)?0.5:0));
+			starty = (int) (p.y + p.dy * i * pro+ ((p.dy==-1)?0.5:0));
 
 			endx = (int) (startx + p.vx * list.get(i));
 			endy = (int) (starty + p.vy * list.get(i));
@@ -38,14 +38,14 @@ public class Mapper {
 
 		// daneben auf 60%
 		set(hindernis.x + p.dx, hindernis.y + p.dy, 0.6);
-		set(hindernis.x + p.dy, hindernis.y - p.dy, 0.6);
+		set(hindernis.x - p.dx, hindernis.y - p.dy, 0.6);
 		// weiter daneben = 50%
 		set(hindernis.x + 2 * p.dx, hindernis.y + 2 * p.dy, 0.6);
-		set(hindernis.x + 2 * p.dy, hindernis.y - 2 * p.dy, 0.6);
+		set(hindernis.x - 2 * p.dx, hindernis.y - 2 * p.dy, 0.6);
 	}
 
 	public void set(int x, int y, double value) {
-		if (x < 64 && x > 0 && y < 64 && y > 0){
+		if (x <= 64 && x > 0 && y < 64 && y >= 0){
 			map[x][y] += value;
 			map[x][y]/=2;
 		}
