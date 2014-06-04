@@ -20,11 +20,11 @@ public class Position {
 			if(this.x==p.x){
 				if(this.y>p.y){
 					par.dy=-1;
-					par.vx=-1;
+					par.vx=1;
 				}
 				else{
 					par.dy=1;
-					par.vx=1;
+					par.vx=-1;
 				}
 			}
 			else{
