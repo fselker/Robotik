@@ -14,7 +14,7 @@ public class Mapper {
 	}
 
 	public void getReihe(int size, ArrayList<Double> list, Position start, Position end) {
-		double pro = list.size() / size;
+		double pro = 1.0*size/list.size() ;
 		int startx, starty, endx, endy;
 		Param p = start.View(end);
 		for (int i = 0; i < list.size(); i++) {
