@@ -51,9 +51,9 @@ public class Main implements Runnable{
 		m.values = new ArrayList<Double>();
 		m.run = true;
 		
-		
-		p.travel(-dist/2);
-		p.rotate(90);
+		p.rotate(180);
+		p.travel(dist/2);
+		p.rotate(-90);
 		t = new Thread(m);
 		t.start();
 		p.travel(dist/2);

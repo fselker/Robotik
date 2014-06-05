@@ -2,8 +2,6 @@ package mapping;
 
 import java.util.ArrayList;
 
-import lejos.nxt.Button;
-
 public class Mapper {
 
 	double map[][];
@@ -49,9 +47,14 @@ public class Mapper {
 	}
 
 	public void set(int x, int y, double value) {
+		double bel;
+		bel=(1-value)*(1-map[x][y]);
+		bel/=value*map[x][y];
+		bel+=1;
+		bel=1/bel;
+		
 		if (x < 64 && x >= 0 && y < 64 && y >= 0){
-			map[x][y] += value;
-			map[x][y]/=2;
+			map[x][y] = bel;
 		}
 	}
 }
