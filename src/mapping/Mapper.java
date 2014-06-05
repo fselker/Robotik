@@ -2,6 +2,8 @@ package mapping;
 
 import java.util.ArrayList;
 
+import lejos.nxt.Button;
+
 public class Mapper {
 
 	double map[][];
@@ -17,14 +19,16 @@ public class Mapper {
 		double pro = 1.0*size/list.size() ;
 		int startx, starty, endx, endy;
 		Param p = start.View(end);
+		System.out.println("startet");
 		for (int i = 0; i < list.size(); i++) {
-			startx = (int) (p.x + p.dx * i * pro+ ((p.dx==-1)?0.5:0));
-			starty = (int) (p.y + p.dy * i * pro+ ((p.dy==-1)?0.5:0));
+			startx = (int) (p.x + p.dx * i * pro+ ((p.dx==-1)?0.9999:0));
+			starty = (int) (p.y + p.dy * i * pro+ ((p.dy==-1)?0.9999:0));
 
 			endx = (int) (startx + p.vx * list.get(i));
 			endy = (int) (starty + p.vy * list.get(i));
-
+			System.out.println("eintrag:"+i);
 			eintragen(new Position(startx, starty), new Position(endx, endy), p);
+			
 		}
 	}
 
@@ -45,7 +49,7 @@ public class Mapper {
 	}
 
 	public void set(int x, int y, double value) {
-		if (x <= 64 && x > 0 && y < 64 && y >= 0){
+		if (x < 64 && x >= 0 && y < 64 && y >= 0){
 			map[x][y] += value;
 			map[x][y]/=2;
 		}
